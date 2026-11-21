@@ -1,0 +1,237 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-display: 'Cormorant Garamond', Georgia, serif;
+    --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+  }
+
+  html,
+  body,
+  #root {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #f8cddb;
+    font-family: var(--font-sans);
+    overscroll-behavior: none;
+  }
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-mono-code {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Chuyển động hít thở & trôi nhẹ nhàng cho nền ảnh chân dung */
+@keyframes portrait-breath {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1.015);
+  }
+  50% {
+    transform: translate3d(0, -10px, 0) scale(1.055);
+  }
+}
+
+.animate-portrait-breath {
+  animation: portrait-breath 16s ease-in-out infinite;
+  will-change: transform;
+}
+
+@keyframes watercolor-drift-a {
+  0%,
+  100% {
+    transform: translate3d(-4%, -3%, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(5%, 4%, 0) scale(1.12);
+  }
+}
+
+.animate-watercolor-a {
+  animation: watercolor-drift-a 18s ease-in-out infinite;
+  will-change: transform;
+}
+
+@keyframes watercolor-drift-b {
+  0%,
+  100% {
+    transform: translate3d(4%, 3%, 0) scale(1.06);
+  }
+  50% {
+    transform: translate3d(-5%, -4%, 0) scale(0.96);
+  }
+}
+
+.animate-watercolor-b {
+  animation: watercolor-drift-b 22s ease-in-out infinite;
+  will-change: transform;
+}
+
+@keyframes bokeh-float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(0.95);
+    opacity: 0.35;
+  }
+  50% {
+    transform: translate3d(var(--bx, 12px), var(--by, -22px), 0) scale(1.12);
+    opacity: 0.72;
+  }
+}
+
+.animate-bokeh-float {
+  animation: bokeh-float var(--dur, 11s) ease-in-out infinite;
+  animation-delay: var(--delay, 0s);
+  will-change: transform, opacity;
+}
+
+/* Hiệu ứng pháo hoa / tim bay nhẹ nhàng khi lưu Voucher */
+@keyframes float-heart-up {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 12px, 0) scale(0.6) rotate(0deg);
+  }
+  20% {
+    opacity: 1;
+    transform: translate3d(var(--tx-mid, 8px), -28px, 0) scale(1.05) rotate(var(--rot, 10deg));
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(var(--tx-end, -12px), -125px, 0) scale(0.8) rotate(var(--rot-end, -18deg));
+  }
+}
+
+.animate-float-heart {
+  animation: float-heart-up 1.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes modal-rise {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 14px, 0) scale(0.96);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+.animate-modal-rise {
+  animation: modal-rise 0.36s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* Chuyển động trái tim bay tinh nghịch trên màn hình đăng nhập */
+@keyframes heart-drift-up {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 12vh, 0) scale(0.55) rotate(var(--r0, -10deg));
+  }
+  15% {
+    opacity: var(--max-op, 0.85);
+  }
+  50% {
+    transform: translate3d(var(--sway, 28px), -45vh, 0) scale(1.05) rotate(var(--r1, 14deg));
+  }
+  85% {
+    opacity: var(--max-op, 0.85);
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(var(--sway-end, -18px), -108vh, 0) scale(0.75) rotate(var(--r2, -12deg));
+  }
+}
+
+.animate-heart-drift {
+  animation: heart-drift-up var(--dur, 9s) linear infinite;
+  animation-delay: var(--delay, 0s);
+  will-change: transform, opacity;
+}
+
+@keyframes heart-bounce-playful {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1) rotate(-4deg);
+  }
+  25% {
+    transform: translate3d(0, -6px, 0) scale(1.12) rotate(5deg);
+  }
+  45% {
+    transform: translate3d(0, 0, 0) scale(0.96) rotate(-2deg);
+  }
+  65% {
+    transform: translate3d(0, -4px, 0) scale(1.08) rotate(3deg);
+  }
+}
+
+.animate-heart-bounce {
+  animation: heart-bounce-playful 2.2s cubic-bezier(0.34, 1.56, 0.64, 1) infinite;
+  will-change: transform;
+}
+
+@keyframes playful-shake {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+  20% {
+    transform: translate3d(-9px, 0, 0) rotate(-1.5deg);
+  }
+  40% {
+    transform: translate3d(9px, 0, 0) rotate(1.5deg);
+  }
+  60% {
+    transform: translate3d(-6px, 0, 0) rotate(-1deg);
+  }
+  80% {
+    transform: translate3d(6px, 0, 0) rotate(1deg);
+  }
+}
+
+.animate-playful-shake {
+  animation: playful-shake 0.42s ease-in-out;
+}
+
+@keyframes envelope-float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(-1.5deg);
+  }
+  50% {
+    transform: translate3d(0, -10px, 0) rotate(1.5deg);
+  }
+}
+
+.animate-envelope-float {
+  animation: envelope-float 3.8s ease-in-out infinite;
+  will-change: transform;
+}
+
+/* Tùy chỉnh thanh cuộn cho danh sách kỷ niệm */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(255, 215, 0, 0.28);
+  border-radius: 3px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 215, 0, 0.45);
+}
